@@ -8,10 +8,12 @@ const opts = {};
 
 if (app.env != 'production') {
     const koaWebpack = require('koa-webpack');
+    const historyFallback = require('koa2-history-api-fallback');
     const webpackConfig = require('../client/config/webpack.dev');
-
-    koaWebpack({ config: webpackConfig, hotClient: { hmr: false, reload: true } })
+    
+    koaWebpack({ config: webpackConfig, devMiddleware: { publicPath: '/' }, hotClient: { hmr: false, reload: true } })
         .then((middleware) => {
+            app.use(historyFallback());
             app.use(middleware);
         });
 }
