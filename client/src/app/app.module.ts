@@ -8,6 +8,22 @@ import { AppComponent } from './app.component';
 import { IndexComponent as SiteComponent } from './components/site/index.component';
 import { HomeComponent as SiteHomeComponent } from './components/site/home.component';
 import { AboutComponent as SiteAboutComponent } from './components/site/about.component';
+import { DetailComponent as PostDetailComponent } from './components/posts/detail.component';
+import { PostListComponent } from './components/posts/list.component';
+import { PostComponent } from './components/posts/post.component';
+
+import { BreadcrumbComponent } from './helpers/breadcrumb/breadcrumb-list';
+
+const directives: any[] = [
+  AppComponent,
+  SiteComponent,
+  SiteHomeComponent,
+  SiteAboutComponent,
+  PostDetailComponent,
+  PostListComponent,
+  PostComponent,
+  BreadcrumbComponent,
+];
 
 const appRoutes: Routes = [
   {
@@ -15,9 +31,11 @@ const appRoutes: Routes = [
     component: SiteComponent,
     children : [
       { path: '', component: SiteHomeComponent },
+      { path: 'tags', component: SiteAboutComponent },
       { path: 'about', component: SiteAboutComponent },
     ]
-  }
+  },
+  { path: 'post/:title', component: PostDetailComponent },
 ]
 
 @NgModule({
@@ -29,12 +47,7 @@ const appRoutes: Routes = [
       { enableTracing: true }
     )
   ],
-  declarations: [
-    AppComponent,
-    SiteComponent,
-    SiteHomeComponent,
-    SiteAboutComponent,
-  ],
+  declarations: directives,
   bootstrap: [ AppComponent ]
 })
 

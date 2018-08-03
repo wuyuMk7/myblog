@@ -1,6 +1,21 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+* {
+
+/*  Available fonts  */
+/*
+    font-family: Arial, sans-serif;
+    font-family: 'Handlee', cursive;
+    font-family: 'Neucha', cursive;
+    font-family: 'Parisienne', cursive;
+    font-family: 'Sacramento', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto Slab', serif;
+*/
+
+    font-family: 'Roboto Slab', Arial, serif;
+}
+
 body {
-    background: #0147A7;
-    color: #fff;
 }
