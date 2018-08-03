@@ -10,7 +10,7 @@ import { PostService } from '../../services/post.service';
 })
 
 export class HomeComponent implements OnInit {
-  posts: Post[];
+  posts: Post[] = [];
 
   constructor (private postService: PostService) {}
 

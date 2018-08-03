@@ -1,0 +1,38 @@
+<div class="title-pane">
+  <div fxFlex="15%" fxHide.xs="true"></div>
+  <div class="" fxLayout="column" fxFlex.gt-xs="70%" fxLayoutAlign="center center">
+    <div class="title">
+      <span> {{ site.title }} </span>
+    </div>
+    <div class="sub">
+      <span> {{ site.sub }} </span>
+    </div>
+    <div *ngIf="site.author" class="author" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap.gt-xs="1em">
+      <!-- <div> By </div> -->
+      <div *ngIf="site.author.avatar" class="avatar">
+        <img [src]="site.author.avatar">
+      </div>
+      <div *ngIf="site.author.name" class="name">
+        {{ site.author.name }}
+      </div>
+    </div>
+  </div>
+  <div fxFlex="15%" fxHide.xs="true"></div>
+</div>
+
+<div fxLayout="row" class="top-container site">
+  <div fxFlex="15%" fxHide.xs="true"></div>
+  <div fxFlex.gt-xs="70%" class="content">
+    <div class="header">
+      <div class="site-menu">
+        <a routerLink="/" routerLinkActive="active"> Home </a>
+        <a routerLink="/tags" routerLinkActive="active"> Tags </a>
+        <a routerLink="/about" routerLinkActive="active"> About </a>
+      </div>
+    </div>
+    <div class="body">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div fxFlex fxHide.xs="true"></div>
+</div>

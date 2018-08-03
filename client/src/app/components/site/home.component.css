@@ -1,0 +1,29 @@
+.post {
+    margin-top: 1.2em;
+}
+
+.post .meta {
+    padding: 0.2em 0;
+    margin-bottom: 0.3em;
+}
+
+.post .meta .meta-item .item *{
+    display: inline;
+    vertical-align: middle;
+    font-size: 0.8em;
+}
+
+.post .meta .meta-item.time .item {
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    .post .meta {
+        margin-bottom: 1em;
+    }
+
+    .post .meta .meta-item.time .item {
+        text-align: left;
+    }
+}
+
