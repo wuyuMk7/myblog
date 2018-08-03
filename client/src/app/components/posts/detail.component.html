@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <app-breadcrumb [items]="items"></app-breadcrumb>
+</div>
+
+<div fxLayout="row" class="top-container post-detail">
+  <div fxFlex="15%" fxHide.xs="true"></div>
+  <div fxFlex.gt-xs="70%" class="content">
+
+    <app-post [post]="post"></app-post>
+  </div>
+  <div fxFlex fxHide.xs="true"></div>
+</div>

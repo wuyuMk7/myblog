@@ -1,0 +1,22 @@
+<div class="post" fxLayout="column" fxLayoutGap="1em">
+  <div class="title" fxLayoutAlign="center center">
+    <h1> {{ post.title }} </h1>
+  </div>
+  <div class="tags" *ngIf="post?.tags?.length > 0" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="0.5em">
+    <mat-chip-list>
+      <mat-chip *ngFor="let tag of post.tags">
+        {{ tag }}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="time" [matTooltip]="post.createdAt" fxLayoutAlign="center center">
+    {{ post.period }}
+  </div>
+
+  <div class="content">
+    {{ post.content }}
+  </div>
+  <div class="comments">
+  </div>
+</div>
+

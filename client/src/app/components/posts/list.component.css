@@ -1,0 +1,85 @@
+.post {
+    margin-top: 1.2em;
+}
+
+.post a {
+    text-decoration: none;
+}
+
+.post .title {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.post .title a {
+    color: black;
+}
+
+.post .title a:hover {
+    color: #5e52fd;
+    text-decoration: underline;
+}
+
+.post .tags {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.post .tags .tag {
+    margin-right: 0.5em;
+}
+
+.post .tags .tag a {
+    color: #666;
+}
+
+.post .tags .tag a:hover {
+    cursor: pointer;
+    color: #5e52fd;
+    text-decoration: underline;
+}
+
+.post .desc {
+    text-align: justify;
+    text-indent: 1em;
+    margin: 1em 0 0.5em 0;
+}
+
+.post .desc .more {
+    font-size: 0.5em;
+}
+
+.post .desc .more a {
+    color: #666
+}
+
+.post .desc .more a:hover {
+    color: #5e52f6;
+    text-decoration: underline;
+}
+
+.post .meta {
+    padding: 0.2em 0;
+    margin: 1em 0 0.5em 0;
+}
+
+.post .meta .meta-item .item *{
+    display: inline;
+    vertical-align: middle;
+    font-size: 0.8em;
+}
+
+.post .meta .meta-item.time .item {
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    .post .meta {
+        margin-bottom: 1em;
+    }
+
+    .post .meta .meta-item.time .item {
+        text-align: left;
+    }
+}
+

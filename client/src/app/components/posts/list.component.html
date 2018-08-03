@@ -1,0 +1,40 @@
+<div class="post-list">
+<div class="post" *ngFor="let post of posts">
+  <div class="title">
+    <a [routerLink]="['post', post.url]"> {{ post.title }} </a>
+  </div>
+  <div *ngIf="post.tags?.length > 0; else post_without_tags" class="tags" fxLayout="row">
+    Tags:&nbsp;
+    <div *ngFor="let tag of post.tags; last as isLast" class="tag">
+      <a [routerLink]="['tag', tag]">{{ tag }}</a>
+      <span *ngIf="!isLast">,</span>
+    </div>
+  </div>
+  <ng-template #post_without_tags>
+    <div class="tags">
+      <span> Tags: Empty </span>
+    </div>
+  </ng-template>
+  <div class="desc">
+    {{ post.desc }}
+    <span class="more">
+      <a [routerLink]="['post', post.url]"> Read More &gt;&gt; </a>
+    </span>
+  </div>
+  <div class="meta" fxLayout="row" fxLayout.lt-sm="column wrap" fxLayoutGap.lt-sm="0.8em">
+    <div class="meta-item count" fxFlex="50" fxLayout="row" fxLayoutGap="1em">
+      <div class="item">
+        <mat-icon>thumb_up_alt</mat-icon>
+        <span> {{ post.like }} </span>
+      </div>
+    </div>
+    <div class="meta-item time" fxFlex fxLayout="row" fxLayoutAlign="end center">
+      <div class="item" fxFlex>
+        <mat-icon>access_time</mat-icon>
+        <span [matTooltip]="post.createdAt | date: 'medium'" matTooltipPosition="above"> {{ post.period }} </span>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</div>
+</div>
