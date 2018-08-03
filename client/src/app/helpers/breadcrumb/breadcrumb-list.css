@@ -1,0 +1,8 @@
+.breadcrumb a {
+    text-decoration: none;
+}
+
+.breadcrumb .last .delimiter{
+    display: none;
+}
+
