@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
-    )
+    ),
+    FontAwesomeModule,
   ],
   declarations: directives,
   bootstrap: [ AppComponent ]
