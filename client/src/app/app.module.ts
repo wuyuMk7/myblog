@@ -15,6 +15,7 @@ import { PostListComponent } from './components/posts/list.component';
 import { PostComponent } from './components/posts/post.component';
 
 import { BreadcrumbComponent } from './helpers/breadcrumb/breadcrumb-list';
+import { SocialButtonComponent } from './helpers/social/social-button';
 
 const directives: any[] = [
   AppComponent,
@@ -25,6 +26,7 @@ const directives: any[] = [
   PostListComponent,
   PostComponent,
   BreadcrumbComponent,
+  SocialButtonComponent,
 ];
 
 const appRoutes: Routes = [
