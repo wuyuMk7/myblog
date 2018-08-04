@@ -1,0 +1,97 @@
+mat-sidenav-container {
+    background-color: white;
+}
+
+.detail-sidenav-menu {
+    padding: 1em;
+    min-width: 30%;
+}
+
+.detail-sidenav-menu .menu{
+    overflow-y: auto;
+    min-height: 90vh;
+}
+
+.detail-sidenav-menu .writer {
+    margin: 1em 0;
+}
+
+.detail-sidenav-menu .writer .avatar img {
+    width: 5em;
+    height: 5em;
+    background: #fafafa;
+    border-radius: 50%;
+    border: 3px solid #c5c5c545;
+}
+
+.detail-sidenav-menu .writer .intro {
+    text-align: center;
+    max-width: 16em;
+    padding: 0 2em;
+}
+
+.detail-sidenav-menu .menu .search form {
+    width: 70%;
+    margin: auto;
+    margin-top: 0.5em;
+}
+
+.detail-sidenav-menu .menu .search mat-form-field {
+    width: 100%;
+}
+
+.detail-sidenav-menu .menu .search mat-icon {
+    position: relative;
+    bottom: -0.3em;
+    color: #aaa;
+}
+
+.detail-sidenav-menu .menu .search mat-icon:hover {
+    color: #0093ff;
+}
+
+.detail-sidenav-menu .writer .social {
+}
+
+.detail-sidenav-menu .menu .links{
+    text-align: center;
+}
+
+.detail-sidenav-menu .menu .urls {
+    margin: 0.3em auto;
+}
+
+.detail-sidenav-menu .menu .urls .url{
+    margin: 0.5em auto;
+}
+
+.detail-sidenav-menu .menu .urls .url mat-icon{
+    position: relative;
+    bottom: -0.2em;
+    color: #aaa;
+}
+
+.detail-sidenav-menu .menu .urls .url a {
+    text-decoration: none;
+    color: #aaa;
+}
+
+.detail-sidenav-menu .menu .urls .url a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+.detail-sidenav-menu .menu .footer {
+}
+
+.detail-sidenav-menu .menu .footer .license {
+    max-width: 20em;
+    margin: 0 auto;
+    margin-top: 1em;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.detail-sidenav-content {
+    margin: 1em;
+}
