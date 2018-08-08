@@ -15,6 +15,12 @@ import {
   FollowButtonComponent as FacebookFollowButtonComponent,
   ShareButtonComponent as FacebookShareButtonComponent
 } from './facebook.component';
+import {
+  ShareButtonComponent as GooglePlusShareButtonComponent,
+} from './google.component';
+import {
+  ShareButtonComponent as LinkedinShareButtonComponent,
+} from './linkedin.component';
 
 @NgModule({
   imports: [
@@ -28,6 +34,8 @@ import {
     GithubFollowButtonComponent,
     FacebookFollowButtonComponent,
     FacebookShareButtonComponent,
+    GooglePlusShareButtonComponent,
+    LinkedinShareButtonComponent,
   ],
   exports: [
     TwitterFollowButtonComponent,
@@ -35,6 +43,8 @@ import {
     GithubFollowButtonComponent,
     FacebookFollowButtonComponent,
     FacebookShareButtonComponent,
+    GooglePlusShareButtonComponent,
+    LinkedinShareButtonComponent,
   ],
 })
 
