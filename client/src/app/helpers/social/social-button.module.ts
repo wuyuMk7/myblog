@@ -24,6 +24,9 @@ import {
 import {
   ShareButtonComponent as RedditShareButtonComponent,
 } from './reddit.component';
+import {
+  ShareButtonComponent as WeiboShareButtonComponent,
+} from './weibo.component';
 
 @NgModule({
   imports: [
@@ -40,6 +43,7 @@ import {
     GooglePlusShareButtonComponent,
     LinkedinShareButtonComponent,
     RedditShareButtonComponent,
+    WeiboShareButtonComponent,
   ],
   exports: [
     TwitterFollowButtonComponent,
@@ -50,6 +54,7 @@ import {
     GooglePlusShareButtonComponent,
     LinkedinShareButtonComponent,
     RedditShareButtonComponent,
+    WeiboShareButtonComponent,
   ],
 })
 
