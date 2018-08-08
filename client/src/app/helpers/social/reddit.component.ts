@@ -27,7 +27,6 @@ export class ShareButtonComponent {
   ngOnInit() {
     let url = escape(this.buttonParams.url);
     let urlParams = `?url=${url}&title=${this.buttonParams.title}`
-    console.log(urlParams);
     document
       .getElementById('social-button-reddit-share')
       .addEventListener('click', function(ev) {

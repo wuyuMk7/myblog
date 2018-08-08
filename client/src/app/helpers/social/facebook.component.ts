@@ -62,7 +62,6 @@ export class ShareButtonComponent {
   ngOnInit() {
     let url = escape(this.buttonParams.url);
     let urlParams = `?u=${url}&t=${this.buttonParams.text}`
-    console.log(urlParams);
     document
       .getElementById('social-button-facebook-share')
       .addEventListener('click', function(ev) {

@@ -31,7 +31,7 @@ export class FollowButtonComponent {
       .getElementById('social-button-github-follow')
       .addEventListener('click', function(ev) {
         window.open(
-          `https://github.com/${button.buttonParams.name}`,
+          `https://github.com/${button.buttonParams.screen_name}`,
           "",
           windowParams
         );
