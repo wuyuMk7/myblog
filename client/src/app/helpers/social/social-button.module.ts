@@ -21,6 +21,9 @@ import {
 import {
   ShareButtonComponent as LinkedinShareButtonComponent,
 } from './linkedin.component';
+import {
+  ShareButtonComponent as RedditShareButtonComponent,
+} from './reddit.component';
 
 @NgModule({
   imports: [
@@ -36,6 +39,7 @@ import {
     FacebookShareButtonComponent,
     GooglePlusShareButtonComponent,
     LinkedinShareButtonComponent,
+    RedditShareButtonComponent,
   ],
   exports: [
     TwitterFollowButtonComponent,
@@ -45,6 +49,7 @@ import {
     FacebookShareButtonComponent,
     GooglePlusShareButtonComponent,
     LinkedinShareButtonComponent,
+    RedditShareButtonComponent,
   ],
 })
 

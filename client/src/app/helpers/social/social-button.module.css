@@ -37,6 +37,11 @@
 .social-button.social-button-google-share a:hover {
     color: #db4437;
 }
+
 .social-button.social-button-linkedin-share a:hover {
     color: #0077b5;
+}
+
+.social-button.social-button-reddit-share a:hover {
+    color: #ff4500;
 }
