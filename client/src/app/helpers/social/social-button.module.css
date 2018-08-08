@@ -1,0 +1,35 @@
+.social-button {
+    
+}
+
+.social-button a {
+    color: #ccc;
+}
+
+.social-button a:hover {
+    cursor: pointer;
+}
+
+.social-button a fa-icon {
+    font-size: 2.2em;
+}
+
+.social-button.social-button-twitter-follow a:hover {
+    color: #1b95e0;
+}
+
+.social-button.social-button-twitter-share a:hover {
+    color: #1b95e0;
+}
+
+.social-button.social-button-github-follow a:hover {
+    color: black;
+}
+
+.social-button.social-button-facebook-follow a:hover {
+    color: #3b5998;
+}
+
+.social-button.social-button-facebook-share a:hover {
+    color: #3b5998;
+}
