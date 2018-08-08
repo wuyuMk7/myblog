@@ -72,7 +72,7 @@ export class ShareButtonComponent {
 
   ngOnInit() {
     let url = escape(this.buttonParams.url);
-    let urlParams = `?url=${url}&text=${this.buttonParams.text}&via=${this.buttonParams.twitter.via}&hastags=${this.buttonParams.twitter.hashtags}`;
+    let urlParams = `?url=${url}&text=${this.buttonParams.text}&via=${this.buttonParams.twitter.via}&hastags=${this.buttonParams.hashtags}`;
     document
       .getElementById('social-button-twitter-share')
       .addEventListener('click', function(ev) {
