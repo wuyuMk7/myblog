@@ -25,6 +25,7 @@ import {
   ShareButtonComponent as RedditShareButtonComponent,
 } from './reddit.component';
 import {
+  FollowButtonComponent as WeiboFollowButtonComponent,
   ShareButtonComponent as WeiboShareButtonComponent,
 } from './weibo.component';
 
@@ -43,6 +44,7 @@ import {
     GooglePlusShareButtonComponent,
     LinkedinShareButtonComponent,
     RedditShareButtonComponent,
+    WeiboFollowButtonComponent,
     WeiboShareButtonComponent,
   ],
   exports: [
@@ -54,6 +56,7 @@ import {
     GooglePlusShareButtonComponent,
     LinkedinShareButtonComponent,
     RedditShareButtonComponent,
+    WeiboFollowButtonComponent,
     WeiboShareButtonComponent,
   ],
 })

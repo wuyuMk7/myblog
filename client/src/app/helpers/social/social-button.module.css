@@ -46,6 +46,10 @@
     color: #ff4500;
 }
 
+.social-button.social-button-weibo-follow a:hover {
+    color: #df2029;
+}
+
 .social-button.social-button-weibo-share a:hover {
     color: #df2029;
 }
