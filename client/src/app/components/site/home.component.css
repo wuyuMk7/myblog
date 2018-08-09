@@ -18,12 +18,12 @@
 }
 
 @media screen and (max-width: 600px) {
-    .post .meta {
-        margin-bottom: 1em;
+    .site-home{
+        padding: 0 1em;
     }
 
-    .post .meta .meta-item.time .item {
-        text-align: left;
+    .post .meta {
+        margin-bottom: 1em;
     }
 }
 
