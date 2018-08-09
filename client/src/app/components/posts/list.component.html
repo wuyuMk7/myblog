@@ -21,15 +21,15 @@
       <a [routerLink]="['post', post.url]"> Read More &gt;&gt; </a>
     </span>
   </div>
-  <div class="meta" fxLayout="row" fxLayout.lt-sm="column wrap" fxLayoutGap.lt-sm="0.8em">
-    <div class="meta-item count" fxFlex="50" fxLayout="row" fxLayoutGap="1em">
+  <div class="meta" fxLayout="row" fxLayoutAlign="space-between stretch" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="0.5em" fxLayoutAlign.lt-sm="start stretch">
+    <div class="meta-item count">
       <div class="item">
         <mat-icon>thumb_up_alt</mat-icon>
         <span> {{ post.like }} </span>
       </div>
     </div>
-    <div class="meta-item time" fxFlex fxLayout="row" fxLayoutAlign="end center">
-      <div class="item" fxFlex>
+    <div class="meta-item time">
+      <div class="item">
         <mat-icon>access_time</mat-icon>
         <span [matTooltip]="post.createdAt | date: 'medium'" matTooltipPosition="above"> {{ post.period }} </span>
       </div>
