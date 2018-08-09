@@ -1,6 +1,15 @@
 .breadcrumb a {
+    margin: 0 0.5em;
     text-decoration: none;
+    color: #ccc;
 }
+
+.breadcrumb a:hover {
+    cursor: pointer;
+    color: black;
+    text-decoration: underline;
+}
+
 
 .breadcrumb .last .delimiter{
     display: none;

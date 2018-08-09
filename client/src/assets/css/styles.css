@@ -17,7 +17,9 @@
     font-family: 'Roboto Slab', Arial, serif;
 }
 
+
 body {
+    margin: 0;
 }
 
 .base-loader {
