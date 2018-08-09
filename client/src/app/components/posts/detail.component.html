@@ -1,15 +1,104 @@
-<div fxLayout="row" fxLayoutAlign="start center">
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
-  <app-breadcrumb [items]="items"></app-breadcrumb>
-</div>
-
-<div fxLayout="row" class="top-container post-detail">
-  <div fxFlex="15%" fxHide.xs="true"></div>
-  <div fxFlex.gt-xs="70%" class="content">
-
-    <app-post [post]="post"></app-post>
-  </div>
-  <div fxFlex fxHide.xs="true"></div>
-</div>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidemenu mode="push" fixedInViewport="fixed" autoFocus="false" class="detail-sidenav-menu">
+    <div class="menu" fxLayout="column" fxLayoutAlign="space-around stretch">
+      <div class="close" fxFlexAlign="start">
+        <button mat-icon-button (click)="sidemenu.toggle()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <div class="writer" fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-around center">
+        <div class="avatar" *ngIf="writer?.avatar">
+          <img [src]="writer.avatar">
+        </div>
+        <div class="name">
+          {{ writer.name }}
+        </div>
+        <div class="intro">
+          {{ writer.intro }}
+        </div>
+        <div class="social" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="1em">
+          <app-social-button-twitter-follow [data-params]="writer.social.twitter"></app-social-button-twitter-follow>
+          <app-social-button-github-follow [data-params]="writer.social.github"></app-social-button-github-follow>
+          <app-social-button-facebook-follow [data-params]="writer.social.facebook"></app-social-button-facebook-follow>
+          <app-social-button-weibo-follow [data-params]="writer.social.weibo"></app-social-button-weibo-follow>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="search">
+        <div class="form-search" id="form-search">
+          <mat-form-field>
+            <input matInput placeholder="Search" #searchInput>
+            <a matSuffix>
+              <mat-icon>search</mat-icon>
+            </a>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="links">
+        <div class="urls">
+          <div class="url">
+            <mat-icon>home</mat-icon>
+            <a [routerLink]="['/']">Go back to Home</a>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="footer">
+        <div class="license" fxLayout="column" fxLayoutGap="0.5em">
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+            <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+          </a>
+          <span>This blog is licensed under a </span>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+            Creative Commons Attribution-NonCommercial 4.0 International License
+          </a>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="detail-sidenav-content">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button mat-icon-button (click)="sidemenu.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-breadcrumb [items]="items"></app-breadcrumb>
+    </div>
+    <div fxLayout="row" class="post-detail">
+      <div fxFlex="15%" fxHide.xs="true"></div>
+      <div fxFlex.gt-xs="70%" class="content">
+        <div class="post">
+          <app-post [post]="post"></app-post>
+        </div>
+        <div class="share">
+          <div class="title">
+            <h3>Share the post to</h3>
+          </div>
+          <div class="buttons" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="1em">
+            <app-social-button-twitter-share [data-params]="shareParams"></app-social-button-twitter-share>
+            <app-social-button-facebook-share [data-params]="shareParams"></app-social-button-facebook-share>
+            <app-social-button-google-share [data-params]="shareParams"></app-social-button-google-share>
+            <app-social-button-linkedin-share [data-params]="shareParams"></app-social-button-linkedin-share>
+            <app-social-button-reddit-share [data-params]="shareParams"></app-social-button-reddit-share>
+            <app-social-button-weibo-share [data-params]="shareParams"></app-social-button-weibo-share>
+          </div>
+        </div>
+        <div class="comments">
+          <div class="title">
+            <h3>Comment List ({{ commentLength }})</h3>
+          </div>
+          <div class="list">
+            <app-comment-list *ngIf="commentLength > 0; else nocomments" [comments]="post.comments" [post]="post.id"></app-comment-list>
+            <ng-template #nocomments>
+              <h4> Leave the first comment now! </h4>
+            </ng-template>
+          </div>
+          <div class="form">
+            <app-comment-form></app-comment-form>
+          </div>
+        </div>
+      </div>
+      <div fxFlex fxHide.xs="true"></div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

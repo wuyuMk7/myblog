@@ -9,6 +9,10 @@ import {
   MatIconModule,
   MatChipsModule,
   MatTooltipModule,
+  MatSidenavModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 @NgModule({
@@ -22,6 +26,10 @@ import {
     MatIconModule,
     MatChipsModule,
     MatTooltipModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     FlexLayoutModule,
@@ -33,6 +41,9 @@ import {
     MatIconModule,
     MatChipsModule,
     MatTooltipModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatFormFieldModule,
   ]
 })
 

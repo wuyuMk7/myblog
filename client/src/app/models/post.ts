@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import { Comment } from './comment';
 
 export class Post {
-  id: number;
+  id: string;
   title: string;
   url: string;
   tags: string[];

@@ -1,0 +1,20 @@
+<div class="comment-form" fxLayout="column">
+  <div class="title">
+    <h3> Leave your comment </h3>
+  </div>
+  <mat-form-field>
+    <input matInput [formControl]="form.author" placeholder="Enter you name" required>
+    <mat-error *ngIf="form.author.invalid">You must enter your name</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [formControl]="form.email" placeholder="Enter you email">
+    <mat-error *ngIf="form.email.invalid">Not a valid email</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput [formControl]="form.content" [matTextareaAutosize]="true" placeholder="Enter you comment*"></textarea>
+    <mat-error *ngIf="form.content.invalid">You must enter the comment </mat-error>
+  </mat-form-field>
+  <div class="submit">
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+@media (min-width: 960px) {
+    .comment-form {
+        width: 50%;
+    }
+}
+
+.comment-form .submit {
+    margin-top: 1em;
+}
