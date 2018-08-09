@@ -1,0 +1,41 @@
+.comment {
+    padding: 1em 0.5em;
+}
+
+.comment .avatar{
+    width: 4em;
+    height: 4em;
+    padding: 0.5em;
+}
+
+.comment .avatar div {
+    width: 2em;
+    height: 2em;
+    font: 2em/2em Arial;
+    text-align: center;
+    vertical-align: middle;
+    background: fuchsia;
+    color: white;
+    border-radius: 50%;
+}
+
+.comment .comment-pane {
+    width: 100%;
+}
+
+.comment .comment-pane .author {
+    width: 100%;
+}
+
+.comment .reply a {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.comment .reply a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #5e52fd;
+}

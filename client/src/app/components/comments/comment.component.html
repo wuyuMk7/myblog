@@ -1,0 +1,26 @@
+<div class="comment" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="1em" [id]="positionId">
+  <div class="avatar">
+    <div class="" [style.background]="background">
+      {{ initialName }}
+    </div>
+  </div>
+  <div class="comment-pane" fxLayout="column" fxLayoutAlign="space-around start">
+    <div class="author" fxLayout="row" fxLayoutAlign="space-between strench">
+      <div>
+        {{ comment.author }}
+      </div>
+      <div>
+          &#35;{{ position }}&nbsp;
+      </div>
+    </div>
+    <div class="time">
+      {{ comment.createdAt }}
+    </div>
+    <div class="content">
+      {{ comment.content }}
+    </div>
+    <div class="reply">
+      <a> Reply </a>
+    </div>
+  </div>
+</div>

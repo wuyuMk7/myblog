@@ -1,0 +1,10 @@
+<div class="comment-list">
+  <div *ngFor="let comment of comments; index as i" class="comment-group">
+    <mat-divider></mat-divider>
+    <app-comment [comment]="comment" [post]="post" [position]="i + 1"></app-comment>
+    <div *ngIf="comment.replies.length > 0" class="reply-list">
+      <mat-divider></mat-divider>
+      <app-comment *ngFor="let reply of comment.replies; index as j" [comment]="reply" [post]="post" [position]="getChildrenPosition(i, j)"></app-comment>
+    </div>
+  </div>
+</div>
