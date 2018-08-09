@@ -5,8 +5,6 @@ import { Location } from '@angular/common';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 
-import { SocialButtonComponent } from '../../helpers/social/social-button';
-
 @Component({
   selector: 'app-post-detail',
   templateUrl: './detail.component.html',
@@ -14,7 +12,8 @@ import { SocialButtonComponent } from '../../helpers/social/social-button';
 })
 
 export class DetailComponent implements OnInit {
-  post: Post;
+  commentLength: number = 0;
+  public post: Post;
   items = [
     {
       "link": "/",
@@ -31,13 +30,33 @@ export class DetailComponent implements OnInit {
     intro: "Allow easy discovery of Tweets by topic by including a comma-separated list of hashtag values without the preceding",
     social: {
       twitter: {
+        name: "hYang",
         screen_name: "hyMeldon",
       },
       github: {
         name: "wuyuMk7",
+        screen_name: "wuyuMk7",
+      },
+      facebook: {
+        name: "YANG HE",
+        screen_name: "wuyuMk7",
+      },
+      weibo: {
+        name: "wuyuMk7",
+        screen_name: "hyunsl",
       }
     }
   };
+
+  shareParams = {
+    url: window.location.href,
+    title: "12345",
+    text: "78990",
+    hashtags: "",
+    twitter: {
+      via: "hyMeldon",
+    }
+  }
 
   constructor (
     private postService: PostService,
@@ -51,9 +70,12 @@ export class DetailComponent implements OnInit {
 
   getPost(): void {
     const title = this.route.snapshot.paramMap.get('title');
-    console.log(title);
+    //console.log(title);
     this.postService.getPost(title)
-      .subscribe(post => this.post = post);
+      .subscribe(post =>{
+        this.post = post;
+        this.commentLength = post.comments.reduce((ac, c) => ac + 1 + c.replies.length, 0);
+      });
   }
 
   goBack(): void {

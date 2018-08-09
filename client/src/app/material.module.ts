@@ -11,6 +11,7 @@ import {
   MatTooltipModule,
   MatSidenavModule,
   MatInputModule,
+  MatFormFieldModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
 
@@ -27,6 +28,7 @@ import {
     MatTooltipModule,
     MatSidenavModule,
     MatInputModule,
+    MatFormFieldModule,
     MatProgressSpinnerModule,
   ],
   exports: [
@@ -41,6 +43,7 @@ import {
     MatTooltipModule,
     MatSidenavModule,
     MatInputModule,
+    MatFormFieldModule,
   ]
 })
 

@@ -16,21 +16,23 @@
         <div class="intro">
           {{ writer.intro }}
         </div>
-        <div class="social" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="0.5em">
-          <app-social-button [data-button-type]="'twitter_follow'" [data-params]="writer.social.twitter"></app-social-button>
-          <app-social-button [data-button-type]="'github_follow'" [data-params]="writer.social.github"></app-social-button>
+        <div class="social" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="1em">
+          <app-social-button-twitter-follow [data-params]="writer.social.twitter"></app-social-button-twitter-follow>
+          <app-social-button-github-follow [data-params]="writer.social.github"></app-social-button-github-follow>
+          <app-social-button-facebook-follow [data-params]="writer.social.facebook"></app-social-button-facebook-follow>
+          <app-social-button-weibo-follow [data-params]="writer.social.weibo"></app-social-button-weibo-follow>
         </div>
       </div>
       <mat-divider></mat-divider>
       <div class="search">
-        <form class="form-search" id="form-search">
+        <div class="form-search" id="form-search">
           <mat-form-field>
             <input matInput placeholder="Search" #searchInput>
             <a matSuffix>
               <mat-icon>search</mat-icon>
             </a>
           </mat-form-field>
-        </form>
+        </div>
       </div>
       <mat-divider></mat-divider>
       <div class="links">
@@ -65,9 +67,35 @@
     <div fxLayout="row" class="post-detail">
       <div fxFlex="15%" fxHide.xs="true"></div>
       <div fxFlex.gt-xs="70%" class="content">
-        <app-post [post]="post"></app-post>
+        <div class="post">
+          <app-post [post]="post"></app-post>
+        </div>
         <div class="share">
-          <app-social-button [data-button-type]="'twitter_share'"></app-social-button>
+          <div class="title">
+            <h3>Share the post to</h3>
+          </div>
+          <div class="buttons" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="1em">
+            <app-social-button-twitter-share [data-params]="shareParams"></app-social-button-twitter-share>
+            <app-social-button-facebook-share [data-params]="shareParams"></app-social-button-facebook-share>
+            <app-social-button-google-share [data-params]="shareParams"></app-social-button-google-share>
+            <app-social-button-linkedin-share [data-params]="shareParams"></app-social-button-linkedin-share>
+            <app-social-button-reddit-share [data-params]="shareParams"></app-social-button-reddit-share>
+            <app-social-button-weibo-share [data-params]="shareParams"></app-social-button-weibo-share>
+          </div>
+        </div>
+        <div class="comments">
+          <div class="title">
+            <h3>Comment List ({{ commentLength }})</h3>
+          </div>
+          <div class="list">
+            <app-comment-list *ngIf="commentLength > 0; else nocomments" [comments]="post.comments" [post]="post.id"></app-comment-list>
+            <ng-template #nocomments>
+              <h4> Leave the first comment now! </h4>
+            </ng-template>
+          </div>
+          <div class="form">
+            <app-comment-form></app-comment-form>
+          </div>
         </div>
       </div>
       <div fxFlex fxHide.xs="true"></div>

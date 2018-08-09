@@ -98,3 +98,7 @@ mat-sidenav-container {
     height: auto;
     min-height: 100%;
 }
+
+.detail-sidenav-content .post-detail .content .post {
+    margin-bottom: 3em;
+}
