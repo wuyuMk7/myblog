@@ -104,7 +104,7 @@ class Post {
 
             db.collection('posts').findOneAndUpdate(
                 { url: url },
-                { $inc: { quantity: 1, 'viewCount': 1 }}
+                { $inc: { 'viewCount': 1 }}
             ).then((doc) => { resolve(doc.value); }).catch(reject);
         });
     }
