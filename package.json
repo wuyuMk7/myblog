@@ -7,6 +7,7 @@
     "test": "karma start client/config/karma.conf.js",
     "build": "rimraf public/dist && webpack --config client/config/webpack.prod.js --progress --profile --bail",
     "dev:frontend": "webpack --config client/config/webpack.dev.js --progress --profile --bail",
+    "dev:backend": "NODE_ENV=backend_dev nodemon --watch server/ ./server/server.js",
     "dev": "node server/server.js",
     "defaults": "webpack-defaults"
   },
@@ -31,8 +32,12 @@
     "express": "^4.16.3",
     "hammerjs": "^2.0.8",
     "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-mongo": "^1.4.1",
+    "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
     "moment": "^2.22.2",
+    "mongodb": "^3.1.8",
     "rxjs": "6.2.0",
     "zone.js": "^0.8.4"
   },
@@ -54,6 +59,7 @@
     "karma-webpack": "^3.0.0",
     "koa-webpack": "^5.0.2",
     "koa2-history-api-fallback": "^0.0.5",
+    "nodemon": "^1.18.4",
     "null-loader": "^0.1.1",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
