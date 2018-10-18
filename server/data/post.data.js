@@ -153,6 +153,10 @@ class Post {
                       'content': this.content,
                       'modifiedAt': this.modifiedAt
                   }
+                },
+                {
+                    returnOriginal: false,
+                    projection: { 'comments.ip': 0, 'comments.comments.ip': 0 }
                 }
             ).then((doc) => { resolve(doc.value); }).catch(reject);
         });
@@ -176,7 +180,11 @@ class Post {
 
             db.collection('posts').findOneAndUpdate(
                 { url: url },
-                { $inc: { 'likeCount': like }}
+                { $inc: { 'likeCount': like }},
+                {
+                    returnOriginal: false,
+                    projection: { 'desc': 0, 'content': 0, 'comments.ip': 0, 'comments.comments.ip': 0 }
+                }
             ).then((doc) => { resolve(doc.value); }).catch(reject);
         });
     }
@@ -192,17 +200,16 @@ class Post {
 
             db.collection('posts').findOneAndUpdate(
                 { url: url },
-                { $inc: { 'viewCount': 1 }}
+                { $inc: { 'viewCount': 1 }},
+                {
+                    returnOriginal: false,
+                    projection: { 'comments.ip': 0, 'comments.comments.ip': 0 }
+                }
             ).then((doc) => { resolve(doc.value); }).catch(reject);
         });
     }
 
     validate(db, url = false) {
-        let validation = {
-            "status": true,
-            "msg": []
-        };
-
         let error = new Error();
         error.name = "PostValidationError";
 
