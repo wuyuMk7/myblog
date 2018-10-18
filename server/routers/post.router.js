@@ -64,13 +64,22 @@ router
 
         try {
             let doc = await post.updateLike(ctx.db, ctx.params.url, data.like);
+            if (doc != null) {
+                ctx.body.data = {
+                    "status": "success",
+                    "like": doc.likeCount
+                };
+            } else {
+                let error = new Error('Post Not Found');
+                error.name = 'PostNotFoundError';
+                throw error;
+            }
         } catch (err) {
             throw err;
         }
     })
 // TODO: Authentication
     .post('/', async (ctx, next) => {
-        // TODO: Validation
         let data = ctx.request.body;
 
         let post = new Post();
