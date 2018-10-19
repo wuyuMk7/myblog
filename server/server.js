@@ -9,9 +9,12 @@ const serve = require('koa-static'),
 
 const config = require('./config');
 const routers = require('./routers/index.router');
+const errors = require('./libs/error.lib');
 
 const staticFiles = __dirname + '/../public/dist';
 const opts = {};
+
+app.use(errors.handler());
 
 if (app.env != 'production' && app.env != 'backend_dev') {
     const koaWebpack = require('koa-webpack');
@@ -70,6 +73,8 @@ app.use(bodyParser());
 app.use(routers.routes());
 
 //app.use(require('koa-static')(staticFiles, opts));
+
+app.on('error', errors.logger());
 app.listen(4000);
 
 console.log('Listening port 4000.');
