@@ -39,23 +39,7 @@ router
                 throw error;
             }
         } catch(err) {
-            if (err.name == 'InvalidURLError') {
-                ctx.status = 404;
-                ctx.body.status = "error";
-                ctx.body.data = {
-                    "status": "error",
-                    "msg": "Invalid URL Error."
-                };
-            } else if (err.name == 'PostNotFoundError') {
-                ctx.status = 404;
-                ctx.body.status = "error";
-                ctx.body.data = {
-                    "status": "error",
-                    "msg": "Post Not Found Error."
-                };
-            } else {
-                throw err;
-            }
+            throw err;
         }
     })
     .patch('/:url/like', async (ctx, next) => {
