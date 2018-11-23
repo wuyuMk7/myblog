@@ -1,6 +1,7 @@
 'use strict';
 
-const Comment = require('../data/comment.data');
+const Comment = require('../data/comment.data'),
+      Token = require('../data/token.data');
 
 const Router = require('koa-router');
 let router = new Router();
@@ -62,7 +63,7 @@ router
             throw err;
         }
     })
-// TODO: Authentication
+    .use(Token.authenticate())
     .patch('/:url/comment/:id/hide', async (ctx, next) => {
         let data = ctx.request.body;
         let comment = new Comment();

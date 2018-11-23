@@ -1,6 +1,7 @@
 'use strict';
 
-const Post = require('../data/post.data');
+const Post = require('../data/post.data'),
+      Token = require('../data/token.data');
 
 const Router = require('koa-router');
 let router = new Router();
@@ -62,7 +63,7 @@ router
             throw err;
         }
     })
-// TODO: Authentication
+    .use(Token.authenticate())
     .post('/', async (ctx, next) => {
         let data = ctx.request.body;
 
