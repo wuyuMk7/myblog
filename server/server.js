@@ -5,22 +5,30 @@ const app = new Koa();
 
 const serve = require('koa-static'),
       bodyParser = require('koa-bodyparser'),
-      mongo = require('koa-mongo');
+      mongo = require('koa-mongo'),
+      crypto = require('crypto');
 
-const config = require('./config');
+const config = require('./config'),
+      info = require('./site');
+
+let tokenSalt = Math.random().toString(36);
+tokenSalt = crypto.createHash('md5').update(tokenSalt + Date.now()).digest('hex');
+let tokensHashTable = {};
+
 const routers = require('./routers/index.router');
 const errors = require('./libs/error.lib');
 
 const staticFiles = __dirname + '/../public/dist';
 const opts = {};
 
+app.proxy = true;
 app.use(errors.handler());
 
 if (app.env != 'production' && app.env != 'backend_dev') {
     const koaWebpack = require('koa-webpack');
     const historyFallback = require('koa2-history-api-fallback');
     const webpackConfig = require('../client/config/webpack.dev');
-    
+
     koaWebpack(
         {
             config: webpackConfig,
@@ -66,6 +74,22 @@ app.use(mongo({
 }));
 app.use(async (ctx, next) => {
     ctx.db = ctx.mongo.db(database.db);
+    await next();
+});
+
+app.use(async (ctx, next) => {
+    ctx.info = {};
+    ctx.info.site = info.site;
+    ctx.credential = info.admin;
+    ctx.tokenSalt = tokenSalt;
+    ctx.tokenSalt = "";
+
+    ctx.tokens = tokensHashTable;
+
+    let token = ctx.request.headers['authorization'];
+    if (token != undefined && token.search('Bearer ') === 0)
+        ctx.token = token.substr(7);
+
     await next();
 });
 

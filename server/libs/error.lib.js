@@ -9,6 +9,41 @@ function handler() {
             ctx.body.status = "error";
 
             switch(err.name) {
+            case 'InvalidCredentialError':
+                ctx.status = 401;
+                ctx.body.data = {
+                    "status": "error",
+                    "msg": "Invalid user credential."
+                };
+                break;
+            case 'TokenError':
+                ctx.status = 401;
+                ctx.body.data = {
+                    "status": "error",
+                    "msg": "Invalid token format."
+                };
+                break;
+            case 'TokenExpiredError':
+                ctx.status = 401;
+                ctx.body.data = {
+                    "status": "error",
+                    "msg": err.message
+                };
+                break;
+            case 'JsonWebTokenError':
+                ctx.status = 401;
+                ctx.body.data = {
+                    "status": "error",
+                    "msg": err.message
+                };
+                break;
+            case 'NotBeforeError':
+                ctx.status = 401;
+                ctx.body.data = {
+                    "status": "error",
+                    "msg": err.message
+                };
+                break;
             case 'PostNotFoundError':
                 ctx.status = 404;
                 ctx.body.data = {
@@ -38,7 +73,7 @@ function handler() {
             case 'PostRepeatURLError':
                 break;
             default:
-                //console.log(err);
+                console.log(err);
                 ctx.status = err.status || err.statusCode || 500;
                 ctx.body = "500 - Internal Server Error.";
                 break;
