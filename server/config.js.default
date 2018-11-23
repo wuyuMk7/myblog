@@ -1,0 +1,21 @@
+'use strict'
+
+var server = {
+    staticFile: true,
+    staticPath: __dirname + '/../../public',
+};
+
+var database = {
+    test: {},
+    production: {},
+    development: {}
+};
+
+var appKey = {
+    twitter: {},
+    yelp: {},
+};
+
+module.exports.server = server;
+module.exports.database = database;
+module.exports.appKey = appKey;
