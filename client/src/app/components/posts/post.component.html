@@ -13,8 +13,7 @@
     {{ post.period }}
   </div>
 
-  <div class="content">
-    {{ post.content }}
+  <div class="content" [innerHtml]="postContent | safeHtml">
   </div>
 </div>
 

@@ -11,7 +11,7 @@ import { Post } from '../models/post';
 
 export class PostService {
   posts: Post[] = [
-    {
+    new Post({
       id: '1',
       title: 'test',
       url: 'test',
@@ -32,11 +32,12 @@ macOS does not support tun/tap devices out of the box; however, there is a widel
 
 sudo chown $USER /dev/tap0
 
-# Run zircon in QEMU, which will open /dev/tap0
+### Run zircon in QEMU, which will open /dev/tap0
 ./scripts/run-zircon-x86 -N
 
-# (In a different window) bring up tap0 with a link local IPv6 address
-sudo ifconfig tap0 inet6 fc00::/7 up`,
+### (In a different window) bring up tap0 with a link local IPv6 address
+sudo ifconfig tap0 inet6 fc00::/7 up
+let formula = <$formula \\displaystyle f(x) = \\int_{-\\infty}^\\infty \\hat f(\\xi) e^{2 \\pi i \\xi x} \\,d\\xi formula$>`,
       comments: [
         {
           id: '1',
@@ -69,8 +70,8 @@ sudo ifconfig tap0 inet6 fc00::/7 up`,
       viewCount: 10,
       commentCount: 0,
       like: 5,
-    },
-    {
+    }),
+    new Post({
       id: '2',
       title: 'test2',
       url: 'test2',
@@ -83,7 +84,7 @@ sudo ifconfig tap0 inet6 fc00::/7 up`,
       commentCount: 0,
       like: 5,
 
-    },
+    }),
   ];
 
   constructor() {
