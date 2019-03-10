@@ -12,14 +12,15 @@
     font-family: 'Dancing Script', cursive;
     font-family: 'Lato', sans-serif;
     font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto Slab', Arial, serif;
 */
 
-    font-family: 'Roboto Slab', Arial, serif;
 }
 
 
 body {
     margin: 0;
+    font-family: 'Roboto Slab', Arial, serif;
 }
 
 .base-loader {
