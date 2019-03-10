@@ -21,6 +21,8 @@ import { CommentComponent } from './components/comments/comment.component';
 
 import { BreadcrumbComponent } from './helpers/breadcrumb/breadcrumb-list';
 
+import { SafeHtmlPipe } from './helpers/safeHtml/safe-html.pipe';
+
 const directives: any[] = [
   AppComponent,
   SiteComponent,
@@ -33,6 +35,8 @@ const directives: any[] = [
   CommentFormComponent,
   CommentComponent,
   BreadcrumbComponent,
+  SafeHtmlPipe,
+
 ];
 
 const appRoutes: Routes = [
