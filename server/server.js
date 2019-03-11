@@ -4,6 +4,7 @@ const Koa = require('koa');
 const app = new Koa();
 
 const serve = require('koa-static'),
+      koaSend = require('koa-send'),
       bodyParser = require('koa-bodyparser'),
       mongo = require('koa-mongo'),
       crypto = require('crypto');
@@ -18,13 +19,18 @@ let tokensHashTable = {};
 const routers = require('./routers/index.router');
 const errors = require('./libs/error.lib');
 
-const staticFiles = __dirname + '/../public/dist';
+const rootPath = (()=> __dirname.substr(0, __dirname.lastIndexOf('/')))();
+//const staticFiles = __dirname + '/../public/dist';
+const staticFiles = rootPath + '/public/dist';
 const opts = {};
 
 app.proxy = true;
 app.use(errors.handler());
 
+let usingWebpack = false;
 if (app.env != 'production' && app.env != 'backend_dev') {
+    usingWebpack = true;
+    
     const koaWebpack = require('koa-webpack');
     const historyFallback = require('koa2-history-api-fallback');
     const webpackConfig = require('../client/config/webpack.dev');
@@ -32,7 +38,7 @@ if (app.env != 'production' && app.env != 'backend_dev') {
     koaWebpack(
         {
             config: webpackConfig,
-            devMiddleware: { publicPath: '/' }, hotClient: { hmr: false, reload: true }
+            devMiddleware: { publicPath: '/' }, hotClient: { hmr: true, reload: true }
         })
         .then((middleware) => {
             app.use(historyFallback());
@@ -96,7 +102,12 @@ app.use(async (ctx, next) => {
 app.use(bodyParser());
 app.use(routers.routes());
 
-//app.use(require('koa-static')(staticFiles, opts));
+if (config.server.staticFile && !usingWebpack) {
+    app.use(require('koa-static')(staticFiles, opts));
+    app.use(async (ctx) => {
+        await koaSend(ctx, '/index.html', {root: staticFiles});
+    });
+}
 
 app.on('error', errors.logger());
 app.listen(4000);
