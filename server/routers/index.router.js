@@ -22,4 +22,6 @@ router.use('/s', siteRouter.routes());
 router.use('/post', postRouter.routes());
 router.use('/post', commentRouter.routes());
 
+router.use('/api', router.routes());
+
 module.exports = router;
