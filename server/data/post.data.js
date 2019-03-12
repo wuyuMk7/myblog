@@ -7,6 +7,7 @@
  */
 
 const descLength = 300;
+const pageSize = 10;
 
 const urlTable = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
@@ -56,8 +57,22 @@ class Post {
         this.comments = [];
     }
 
-    all() {}
-    list() {}
+    static all(db) {
+        return new Promise((resolve, reject) => {
+            db.collection('posts').find({}).toArray()
+                .then(docs => resolve(docs)).catch(reject);
+        });
+    }
+
+    static list(db, page = 1) {
+        return new Promise(async (resolve, reject) => {
+            if (isNaN(page)) page = 1;
+
+            db.collection('posts').find({})
+                .skip(pageSize * (page - 1)).limit(pageSize).toArray()
+                .then(docs => resolve(docs)).catch(reject);
+        });
+    }
 
     create(db) {
         let now = new Date();

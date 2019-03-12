@@ -11,6 +11,32 @@ router.use('/', async (ctx, next) => {
 });
 
 router
+    .get('/list/:page*', async (ctx, next) => {
+        try {
+            let docs = await Post.list(ctx.db, ctx.params.page);
+            let bodyPosts = [];
+
+            if (docs && docs.length) {
+                docs.forEach((doc) => {
+                    bodyPosts.push({
+                        title: doc.title,
+                        url: doc.url,
+                        desc: doc.desc,
+                        tags: doc.tag,
+                        like: doc.likeCount,
+                        createdAt: doc.createdAt
+                    });
+                });
+            }
+
+            ctx.body.data = {
+                "status": "success",
+                "posts": bodyPosts
+            };
+        } catch(err) {
+            throw err;
+        }
+    })
     .get('/:url', async (ctx, next) => {
         let post = new Post();
 
