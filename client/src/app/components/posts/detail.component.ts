@@ -5,6 +5,8 @@ import { Location } from '@angular/common';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 
+import { Comment } from '../../models/comment';
+
 @Component({
   selector: 'app-post-detail',
   templateUrl: './detail.component.html',
@@ -72,9 +74,51 @@ export class DetailComponent implements OnInit {
     const title = this.route.snapshot.paramMap.get('title');
     //console.log(title);
     this.postService.getPost(title)
-      .subscribe(post =>{
-        this.post = post;
-        this.commentLength = post.comments.reduce((ac, c) => ac + 1 + c.replies.length, 0);
+      .subscribe(resp =>{
+        //this.post = post;
+        //this.commentLength = post.comments.reduce((ac, c) => ac + 1 + c.replies.length, 0);
+        if (resp['status'] == 'success') {
+          let data = resp['data'];
+          if (data['status'] == 'success') {
+            this.post = new Post({
+              id: 0,
+              title: data['post']['title'],
+              url: data['post']['url'],
+              tags: data['post']['tag'],
+              desc: data['post']['desc'],
+              content: data['post']['content'],
+              comments: [],
+              createdAt: data['post']['createdAt'],
+              period: 0,
+              viewCount: data['post']['viewCount'],
+              commentCount: 0,
+              like: data['post']['likeCount']
+            });
+
+            for (let comment of data['post']['comments']) {
+              let newComment: Comment = {
+                id: comment["_id"],
+                author: comment["author"],
+                email: comment["email"],
+                content: comment["content"],
+                createdAt: comment["createdAt"],
+                replies: []
+              };
+              for (let reply of comment['comments']) {
+                newComment.replies.push({
+                  id: reply["_id"],
+                  author: reply["author"],
+                  email: reply["email"],
+                  content: reply["content"],
+                  createdAt: reply["createdAt"],
+                  replies: []
+                })
+              }
+              this.post.comments.push(newComment);
+              this.commentLength += (1 + newComment.replies.length);
+            }
+          }
+        }
       });
   }
 

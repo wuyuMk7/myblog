@@ -59,8 +59,8 @@ export class Post {
       index = leftIndex + formula.length;
     }
 
+    content = content.replace(/\\n/g, '\n');
     content = marked(content);
-
     return content;
   }
 }
