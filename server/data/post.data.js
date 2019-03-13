@@ -123,7 +123,7 @@ class Post {
 
     delete(db, url) {
         return new Promise((resolve, reject) => {
-            if (url.length != 16 || url.replace(/[a-zA-Z1-9]/g, '').length != 0) {
+            if (url.length != 16 || url.replace(/[a-zA-Z0-9]/g, '').length != 0) {
                 let error = new Error('Invalid URL');
                 error.name = "InvalidURLError";
                 reject(error);
@@ -143,7 +143,7 @@ class Post {
         this.desc = generateDesc(this.content);
 
         return new Promise(async (resolve, reject) => {
-            if (url.length != 16 || url.replace(/[a-zA-Z1-9]/g, '').length != 0) {
+            if (url.length != 16 || url.replace(/[a-zA-Z0-9]/g, '').length != 0) {
                 let error = new Error('Invalid URL');
                 error.name = "InvalidURLError";
                 reject(error);
@@ -179,7 +179,7 @@ class Post {
 
     updateLike(db, url, like) {
         return new Promise((resolve, reject) => {
-            if (url.length != 16 || url.replace(/[a-zA-Z1-9]/g, '').length != 0) {
+            if (url.length != 16 || url.replace(/[a-zA-Z0-9]/g, '').length != 0) {
                 let error = new Error('Invalid URL');
                 error.name = "InvalidURLError";
                 reject(error);
@@ -206,7 +206,7 @@ class Post {
 
     detail(db, url) {
         return new Promise((resolve, reject) => {
-            if (url.length != 16 || url.replace(/[a-zA-Z1-9]/g, '').length != 0) {
+            if (url.length != 16 || url.replace(/[a-zA-Z0-9]/g, '').length != 0) {
                 let error = new Error('Invalid URL');
                 error.name = "InvalidURLError";
                 reject(error);
