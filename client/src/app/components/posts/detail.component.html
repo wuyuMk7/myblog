@@ -67,7 +67,7 @@
     <div fxLayout="row" class="post-detail">
       <div fxFlex="15%" fxHide.xs="true"></div>
       <div fxFlex.gt-xs="70%" class="content">
-        <div class="post">
+        <div class="post" *ngIf="post">
           <app-post [post]="post"></app-post>
         </div>
         <div class="share">

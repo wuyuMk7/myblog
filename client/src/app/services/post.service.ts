@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import * as moment from 'moment';
@@ -10,6 +11,9 @@ import { Post } from '../models/post';
 })
 
 export class PostService {
+  private postListUrl = '/api/post/list';
+  private basePostUrl = '/api/post';
+
   posts: Post[] = [
     new Post({
       id: '1',
@@ -87,16 +91,17 @@ let formula = <$formula \\displaystyle f(x) = \\int_{-\\infty}^\\infty \\hat f(\
     }),
   ];
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.posts.map(post => post.period = moment(post.createdAt).fromNow());
   }
 
-  getPosts(): Observable<Post[]> {
-    return of(this.posts);
+  getPosts() {
+    return this.http.get(this.postListUrl);
   }
 
-  getPost(name: string): Observable<Post> {
-    return of(this.posts[0]);
+  getPost(name: string) {
+    return this.http.get(this.basePostUrl + '/' + name);
+    //return of(this.posts[0]);
   }
 
   getPostById(id: string): Observable<Post> {

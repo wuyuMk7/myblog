@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../../models/post';
 import { PostService } from '../../services/post.service';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,6 +22,31 @@ export class HomeComponent implements OnInit {
 
   getPosts(): void{
     this.postService.getPosts()
-      .subscribe(posts => this.posts = posts);
+      .subscribe(resp => {
+        if (resp['status'] == 'success') {
+          let data = resp['data'];
+          if (data['posts'] && data['posts']) {
+            for (let post of data['posts']){
+              //this.posts.push(new Post(post));
+              let newPost = new Post({
+                id: 0,
+                title: post['title'],
+                url: post['url'],
+                tags: post['tags'],
+                desc: post['desc'],
+                content: '',
+                comemnts: [],
+                createdAt: post['createdAt'],
+                viewCount: 0,
+                commentCount: 0,
+                like: post['like'],
+              });
+
+              newPost.period = moment(post['createdAt']).fromNow();
+              this.posts.push(newPost);
+            }
+          }
+        }
+      });
   }
 }
