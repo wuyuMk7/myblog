@@ -35,18 +35,29 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: helpers.root('src', 'app'),
-        loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: [{
-                loader: 'css-loader?sourceMap'  
-            }]
-        })
+	use: [
+            'to-string-loader',
+	    {
+                loader: 'css-loader',
+		options: {
+                    sourceMap: true
+		}
+	    }
+	],
+        include: helpers.root('src', 'app')
       },
       {
         test: /\.css$/,
-        include: helpers.root('src', 'app'),
-        loader: 'raw-loader'
+	use: [
+            'style-loader',
+	    {
+                loader: 'css-loader',
+		options: {
+                    sourceMap: true
+		}
+	    }
+	],
+        exclude: helpers.root('src', 'app')
       }
     ]
   },
