@@ -26,7 +26,8 @@ const opts = {};
 app.proxy = true;
 app.use(errors.handler());
 
-if (app.env != 'production' && app.env != 'backend_dev') {
+const enableWebpackDevServer = app.env != 'production' && app.env != 'backend_dev';
+if (enableWebpackDevServer) {
     const koaWebpack = require('koa-webpack');
     const historyFallback = require('koa2-history-api-fallback');
     const webpackConfig = require('../client/config/webpack.dev');
@@ -99,7 +100,7 @@ app.use(bodyParser());
 
 if (usingStaticFiles)
   app.use(require('koa-static')(staticFiles, opts));
-app.use(routers(usingStaticFiles, staticFiles).routes());
+app.use(routers(usingStaticFiles, staticFiles, enableWebpackDevServer).routes());
 
 app.on('error', errors.logger());
 app.listen(4000);

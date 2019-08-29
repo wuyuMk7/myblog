@@ -36,20 +36,22 @@ apiRouter.use('/s', siteRouter.routes());
 apiRouter.use('/post', postRouter.routes());
 apiRouter.use('/post', commentRouter.routes());
 
-module.exports = (usingStaticFiles, staticFiles) => {
+module.exports = (usingStaticFiles, staticFiles, enableWebpackDevServer) => {
   router.use(apiRouter.routes());
 
-  router.all(`*`, async (ctx, next) => {
-    if (usingStaticFiles) {
-      try {
-        ctx.body = await readFile(`${staticFiles}/index.html`);
-      } catch(err) {
-	throw err;
+  if (usingStaticFiles && !enableWebpackDevServer) {
+    router.all(`*`, async (ctx, next) => {
+      if (usingStaticFiles) {
+        try {
+          ctx.body = await readFile(`${staticFiles}/index.html`);
+        } catch(err) {
+          throw err;
+        }
+      } else {
+        ctx.throw(404, 'PageNotFound');
       }
-    } else {
-      ctx.throw(404, 'PageNotFound');
-    }
-  });
+    });
+  }
 
   return router;
 };
