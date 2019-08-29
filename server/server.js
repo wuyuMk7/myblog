@@ -18,7 +18,9 @@ let tokensHashTable = {};
 const routers = require('./routers/index.router');
 const errors = require('./libs/error.lib');
 
-const staticFiles = __dirname + '/../public/dist';
+//const staticFiles = __dirname + '/../public/dist';
+const usingStaticFiles = config.server.staticFile;
+const staticFiles = config.server.staticPath;
 const opts = {};
 
 app.proxy = true;
@@ -94,9 +96,10 @@ app.use(async (ctx, next) => {
 });
 
 app.use(bodyParser());
-app.use(routers.routes());
 
-//app.use(require('koa-static')(staticFiles, opts));
+if (usingStaticFiles)
+  app.use(require('koa-static')(staticFiles, opts));
+app.use(routers(usingStaticFiles, staticFiles).routes());
 
 app.on('error', errors.logger());
 app.listen(4000);
